@@ -10,7 +10,7 @@
     <!-- <div data-role="page" id="page-login">
         <div data-role="header" data-position="fixed">
             <h1>Todo list</h1>
-        </div><!-- /header -->
+        </div><! /header -->
         <div data-role="content">
             <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
             <a id="fb-login" data-role="button" data-theme="b"> Login with facebook </a>
@@ -32,7 +32,7 @@
 
     <!-- <div data-role="collapsible-set" data-theme="b" data-content-theme="d"> -->
     <div data-role="collapsible" data-theme="b">
-        <h2>Time</h2>
+        <h2>Categorized Reminders</h2>
         <ul data-role="listview" data-divider-theme="d">
             <li><a href="index.html"> Item 1 </a></li>
             <li><a href="index.html">Item 2</a></li>
@@ -42,7 +42,7 @@
         </ul>
     </div>
     <div data-role="collapsible" data-theme="b">
-        <h2>Place</h2>
+        <h2>General Reminders</h2>
         <ul data-role="listview" data-divider-theme="d">
             <li><a href="index.html"> Item 1 </a></li>
             <li><a href="index.html">Item 2</a></li>
@@ -64,21 +64,19 @@
   </div><!-- /header -->
 
   <div data-role="content">
-    <label for="select-choice-0" data-theme="a" class="select">Select place</label>
+<!--     <label for="select-choice-0" data-theme="a" class="select">Select place</label>
 <select name="select-choice-0" data-theme="a" id="select-choice-0">
    <option value="standard">Groceries</option>
    <option value="rush">Electronics</option>
    <option value="express">Malls</option>
-</select>
+</select> -->
+
+
 
 <br>
-<lable> or </label>
-
-<br>
-<br>
 
 
-<a href="popupMap" data-theme="a" data-role="button"> Select a particular point in Map</a>
+<!-- <a href="popupMap" data-theme="a" data-role="button"> Select a particular point in Map</a> -->
 
 <br>
 <br>
@@ -99,7 +97,8 @@
 
 
 
-<div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance= "15,15">
+<div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" 
+data-tolerance= "15,15">
 
     <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 
