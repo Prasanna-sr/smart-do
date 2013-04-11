@@ -1,4 +1,7 @@
 var express = require('express');
+// //var passport = require('passport')
+//   , FacebookStrategy = require('passport-facebook').Strategy;
+
 var Facebook = require('facebook-node-sdk');
 var app = express();
 
