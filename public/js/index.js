@@ -1,12 +1,18 @@
+var domain;
+var SMART_TODO = {
+  domain : "",
+  appID : "113414208819474"
+}
+if(window) {
+  domain = (window.location.host.indexOf("localhost") != -1) ? "http://localhost:3000" : "http://taskreminders.cloudfoundry.com";
+} else {
+  domain = "http://taskreminders.cloudfoundry.com";
+}
 
 $(document).ready(function() {
 
 var appId = "113414208819474";
-if(window) {
-  var domain = (window.location.host.indexOf("localhost") != -1) ? "http://localhost:3000" : "http://taskreminders.cloudfoundry.com";
-} else {
-  var domain = "http://taskreminders.cloudfoundry.com";
-}
+
 //var domain = "http://taskreminders.cloudfoundry.com";
 
 var permissionList = "user_interests,user_likes,user_groups, user_location, user_status,user_hometown," +
@@ -56,6 +62,5 @@ $('#fb-login').click(function(){
  }, {scope: permissionList});
 
 });
-
 
 });
