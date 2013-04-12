@@ -1,14 +1,15 @@
 var express = require('express');
-// //var passport = require('passport')
-//   , FacebookStrategy = require('passport-facebook').Strategy;
-
-var Facebook = require('facebook-node-sdk');
-var app = express();
+var passport = require('passport')
+   , FacebookStrategy = require('passport-facebook').Strategy;
 
 var express_config = require('./lib/express_config');
-express_config(app, express, Facebook);
-console.log("routes");
+var passport_config = require('./lib/passport_config');
 var routes = require('./lib/routes');
-routes(app, Facebook);
+
+var app = express();
+
+passport_config(passport, FacebookStrategy);
+express_config(app, express, passport);
+routes(app, passport);
 app.listen(3000);
 console.log('Server running at localhost:3000');
