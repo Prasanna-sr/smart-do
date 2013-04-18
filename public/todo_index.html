@@ -10,42 +10,30 @@
 
 </head>
 <body>
-  <!-- <div data-role="page" id="page-login">
+
+  <div data-role="page" id="page-home">
     <div data-role="header" data-position="fixed">
       <h1>Todo list</h1>
-    </div>
+    </div><!-- /header -->
+
     <div data-role="content">
-      <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
-      <a id="fb-login" href="/login" data-role="button" data-theme="b"> Login with facebook </a>
-    </div>    
-    <div data-role="footer" data-position="fixed">
-      <h4>Todo list</h4>
-    </div><!-- login --> -->
+      <fieldset class="ui-grid-a">
+        <div data-role="collapsible" data-theme="a" style="width:90%" class="ui-block-a">
+          <h2>Categorized Reminders</h2>
+          <ul id="categorized-reminders" data-role="listview" data-divider-theme="d">
 
+          </ul>
+        </div>
+        <div class="ui-block-b" style="width:5%">
+          <a href="#page-category" data-role="button" data-theme="a" data-inline="true">+</a>  
+        </div>
 
-        <div data-role="page" id="page-home">
-          <div data-role="header" data-position="fixed">
-            <h1>Todo list</h1>
-          </div><!-- /header -->
+      </fieldset>
 
-          <div data-role="content">
-            <fieldset class="ui-grid-a">
-              <div data-role="collapsible" data-theme="a" style="width:90%" class="ui-block-a">
-                <h2>Categorized Reminders</h2>
-                <ul id="categorized-reminders" data-role="listview" data-divider-theme="d">
-
-                </ul>
-              </div>
-              <div class="ui-block-b" style="width:5%">
-                <a href="#page-category" data-role="button" data-theme="a" data-inline="true">+</a>  
-              </div>
-
-            </fieldset>
-
-            <fieldset class="ui-grid-a">
-              <div data-role="collapsible" data-theme="a" style="width:90%" class="ui-block-a">
-                <h2>General Reminders</h2>
-                <ul id="general-reminders" data-role="listview" data-divider-theme="d">
+      <fieldset class="ui-grid-a">
+        <div data-role="collapsible" data-theme="a" style="width:90%" class="ui-block-a">
+          <h2>General Reminders</h2>
+          <ul id="general-reminders" data-role="listview" data-divider-theme="d">
                   <!-- <li><a href="index.html"> Item 1 </a></li>
                   <li><a href="index.html">Item 2</a></li>
                   <li><a href="index.html">Item 3</a></li>
@@ -73,7 +61,8 @@
             <input type="text" data-clear-btn="true" id="add-item">
             <div id="general-bar">
               <a id="btnTime" data-role="button" data-theme="a" data-inline="true">Time</a>  
-              <a id="btnPlace" data-role="button" data-theme="a" data-inline="true">Place</a>  
+              <a id="btnPlace" data-role="button" data-theme="a" data-inline="true">Place</a> 
+               
             </div>
             <div id="date_time">
               <div data-role="fieldcontain">
@@ -107,31 +96,31 @@
             <label for="add-item-category"> Add an item :  </label>
             <input type="text" data-clear-btn="true" id="add-item-category">
             <div id="category-bar">
-            <a id="btnShopping" data-role="button" data-theme="a" data-inline="true">Shopping</a>  
-            <a id="btnServices" data-role="button" data-theme="a" data-inline="true">Services</a>  
-            <a id="btnTime" data-role="button" data-theme="a" data-inline="true">Other</a>  
+              <a id="btnShopping" data-role="button" data-theme="a" data-inline="true">Shopping</a>  
+              <a id="btnServices" data-role="button" data-theme="a" data-inline="true">Services</a>  
+              <a id="btnTime" data-role="button" data-theme="a" data-inline="true">Other</a>  
             </div>
             <div id="shopping-bar">
               <div class="ui-grid-a">
-            <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:20px">Categorized as Electronics ! </div></div>
-        <!--     <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">Block B</div></div> -->
+                    <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:20px">Categorized as Electronics ! </div></div>
+                <!--     <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">Block B</div></div> -->
               </div><!-- /grid-a -->
             </div>
             <div id="services-bar">
               <div class="ui-bar ui-bar-e" style="height:20px">Couldn't be categorized ! </div>
               
                   <div class="ui-block-a">
-                </div>
+              </div>
               <div class="ui-grid-c ui-responsive">
-            <div class="ui-block-a"><div class="ui-body ui-body-d">Gas Station</div></div>
-            <div class="ui-block-b"><div class="ui-body ui-body-d">Post Office</div></div>
-            <div class="ui-block-c"><div class="ui-body ui-body-d">Book store</div></div>
-            <div class="ui-block-d"><div class="ui-body ui-body-d">movie theatre</div></div>
-            </div><!-- /grid-c -->
-            <br />
-            <br />
+                <div class="ui-block-a"><div class="ui-body ui-body-d">Gas Station</div></div>
+                <div class="ui-block-b"><div class="ui-body ui-body-d">Post Office</div></div>
+                <div class="ui-block-c"><div class="ui-body ui-body-d">Book store</div></div>
+                <div class="ui-block-d"><div class="ui-body ui-body-d">movie theatre</div></div>
+              </div><!-- /grid-c -->
+              <br />
+              <br />
             </div>
-          
+
             <!-- <div id="google_map">
               <iframe src="./map.html" width="100%" class="myIframe"></iframe>
               <a id="btnCategoryDone" href="#page-home" data-role="button" data-theme="a"> Done </a>
@@ -141,14 +130,6 @@
             <h4>Todo list</h4>
           </div><!-- /footer -->
         </div> <!-- End of page categorized-->
-
-
-        <div data-role="popup" id="popupBasic">
-          <input id="item" type="text" data-clear-btn="true" name="text-3" value="">
-          <a href="#datetime" data-role="button" data-inline="true">Time</a>
-          <a href="#page-place" data-role="button" data-inline="true">Place</a>
-          <a href="#" data-role="button" data-inline="true">None</a>
-        </div><!-- Pop up div -->
 
 
 
@@ -165,6 +146,7 @@ data-tolerance= "15,15">
 
 
  <div data-role="popup" id="datetime" data-theme="a">
+
   <div data-role="fieldcontain">
     <label for="date">Pick Date</label>
     <input name="date" id="mydate" type="date" data-role="datebox" data-options='{"mode": "calbox"}'>
