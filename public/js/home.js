@@ -44,7 +44,7 @@ function watchlocation() {
 
 
 $("#page-home").bind('pagebeforeshow',function() {
-
+	$('#add-item').val('');
 	$('#general-reminders li').remove();
 	$('#categorized-reminders li').remove();
 
