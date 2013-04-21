@@ -15,7 +15,7 @@ $('#btnTime').click(function() {
 });
 
 
-  $('#btnPlace').click(function() {
+    $('#btnPlace').click(function() {
 
   $('#btnTime').buttonMarkup({ theme: "a" });
   $('#btnPlace').buttonMarkup({ theme: "c" });
@@ -23,9 +23,10 @@ $('#btnTime').click(function() {
   $('#google_map').attr('style', 'display: block');
   $('#date_time').attr('style', 'display: none');
 
-    google.maps.event.trigger(map, 'resize');
-  map.setCenter(new google.maps.LatLng(SMART_TODO.coords.latitude, SMART_TODO.coords.longitude));
+   google.maps.event.trigger(SMART_TODO.map, 'resize');
+  SMART_TODO.map.setCenter(new google.maps.LatLng(SMART_TODO.coords.latitude, SMART_TODO.coords.longitude));
 });
+    
 
 
 

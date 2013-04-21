@@ -21,7 +21,9 @@ function onSuccess(position) {
 	if(position && position.coords) {
 
 		SMART_TODO.coords = position.coords;
-		$.post('/updateCoordinates', {currentLocation : SMART_TODO.coords});
+		$.post('/updateCoordinates', {currentLocation : SMART_TODO.coords}, function(result) {
+			alert(JSON.stringify(result));
+		});
 	} else {
 		console.log('position coordinates not avaialble');
 	}
