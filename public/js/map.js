@@ -11,7 +11,7 @@ if(SMART_TODO.selectedPosition && SMART_TODO.selectedPosition.kb) {
  var selectedPosition = [parseFloat(SMART_TODO.coords.longitude), parseFloat(SMART_TODO.coords.latitude)];
 }
 
-$.post(SMART_TODO.domain + "/addItem", {date : "", time : "", currentLocation : SMART_TODO.coords, 
+$.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.coords, 
   targetLocation : selectedPosition, item : $('#add-item').val(), category : 1});
 $.mobile.changePage("#page-home", {transition : "none"});
 

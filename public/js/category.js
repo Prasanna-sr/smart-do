@@ -10,7 +10,7 @@ $("#page-category").bind('pagebeforeshow',function() {
 
 	$('#btnCategoryDone').click(function() {
 		$.post(SMART_TODO.domain + "/addItem", {item : $('#add-item-category').val(),
-			itemCategory : "provision", category : 0});
+			itemCategory : "provision", category : 0, currentLocation : SMART_TODO.coords});
 	});
 
 	$('#btnShopping').click(function() {
@@ -24,7 +24,7 @@ $("#page-category").bind('pagebeforeshow',function() {
 	});
 
 	$('#shopping-bar a').click(function() {
-		$.post(SMART_TODO.domain + "/shoppingItem", { category : $(this).text(), location : SMART_TODO.coords }, function (resultStr) {
+		$.post(SMART_TODO.domain + "/shoppingItem", { item : $('#add-item-category').val(), category : $(this).text(), location : SMART_TODO.coords }, function (resultStr) {
 			//alert(resultStr);
 		});
 	});
