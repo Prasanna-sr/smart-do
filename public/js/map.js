@@ -13,7 +13,7 @@ if(SMART_TODO.selectedPosition && SMART_TODO.selectedPosition.kb) {
 
 $.post(SMART_TODO.domain + "/addItem", {date : "", time : "", currentLocation : SMART_TODO.coords, 
   targetLocation : selectedPosition, item : $('#add-item').val(), category : 1});
-$.mobile.changePage("#page-home");
+$.mobile.changePage("#page-home", {transition : "none"});
 
 });
 

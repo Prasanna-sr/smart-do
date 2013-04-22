@@ -25,7 +25,7 @@
           </ul>
         </div>
         <div class="ui-block-b" style="width:5%">
-          <a href="#page-category" data-role="button" data-theme="a" data-inline="true">+</a>  
+          <a href="#page-category" data-transition="none" data-role="button" data-theme="a" data-inline="true">+</a>  
         </div>
 
       </fieldset>
@@ -93,31 +93,34 @@
             <h1>Todo list</h1>
           </div><!-- /header -->
           <div data-role="content">
-            <label for="add-item-category"> Add an item :  </label>
+            <label for="add-item-category"> Add an item   </label>
             <input type="text" data-clear-btn="true" id="add-item-category">
             <div id="category-bar">
+              <div data-role="controlgroup" data-type="horizontal">
               <a id="btnShopping" data-role="button" data-theme="a" data-inline="true">Shopping</a>  
               <a id="btnServices" data-role="button" data-theme="a" data-inline="true">Services</a>  
               <a id="btnTime" data-role="button" data-theme="a" data-inline="true">Other</a>  
             </div>
+            </div>
             <div id="shopping-bar">
-              <div class="ui-grid-a">
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:20px">Categorized as Electronics ! </div></div>
-                <!--     <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">Block B</div></div> -->
-              </div><!-- /grid-a -->
+                <div class="ui-bar ui-bar-e" style="height:20px"> xx shopping </div>
+              <br />
+                  <div data-role="controlgroup" data-type="horizontal">
+                   <a data-role="button">Department Stores/SuperMarket</a>
+                   <a data-role="button" class="ui-body ui-body-d">Electronics</a>
+                    <a data-role="button"  class="ui-body ui-body-d">Clothing Store</a>
+                <a data-role="button" value="pharmacy" class="ui-body ui-body-d">Pharmacy</a>
+                </div>
+
             </div>
             <div id="services-bar">
-              <div class="ui-bar ui-bar-e" style="height:20px">Couldn't be categorized ! </div>
-              
-                  <div class="ui-block-a">
+              <div class="ui-bar ui-bar-e" style="height:20px">xx services </div>
+              <div data-role="controlgroup" data-type="horizontal">
+                <a data-role="button">Gas Station</a>
+                <a data-role="button" >Post Office</a>
+                <a data-role="button" >Book store</a>
+                <a data-role="button" >movie theatre</a>
               </div>
-              <div class="ui-grid-c ui-responsive">
-                <div class="ui-block-a"><div class="ui-body ui-body-d">Gas Station</div></div>
-                <div class="ui-block-b"><div class="ui-body ui-body-d">Post Office</div></div>
-                <div class="ui-block-c"><div class="ui-body ui-body-d">Book store</div></div>
-                <div class="ui-block-d"><div class="ui-body ui-body-d">movie theatre</div></div>
-              </div><!-- /grid-c -->
-              <br />
               <br />
             </div>
 

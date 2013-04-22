@@ -23,4 +23,10 @@ $("#page-category").bind('pagebeforeshow',function() {
 		$('#services-bar').attr('style', 'display: inline');
 	});
 
+	$('#shopping-bar a').click(function() {
+		$.post(SMART_TODO.domain + "/shoppingItem", { category : $(this).text(), location : SMART_TODO.coords }, function (resultStr) {
+			//alert(resultStr);
+		});
+	});
+
 });
