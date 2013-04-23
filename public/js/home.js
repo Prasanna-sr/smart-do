@@ -14,22 +14,16 @@ if(screen.size <=700) {
 } else {
 	watchlocation();
 }
-});
-
 
 function onSuccess(position) {
 	if(position && position.coords) {
-
 		SMART_TODO.coords = position.coords;
 		$.post('/updateCoordinates', {currentLocation : SMART_TODO.coords}, function(result) {
 			alert(JSON.stringify(result));
 		});
 	} else {
 		console.log('position coordinates not avaialble');
-	}
-
-		
-	
+	}	
 }
 
 function onError(error) {
@@ -40,6 +34,17 @@ function watchlocation() {
 	navigator.geolocation.watchPosition(onSuccess, onError,
 		{ enableHighAccuracy: true, maximumAge:5000 });
 }
+
+function removeGeneral(id) {
+	var g = document.getElementById('general-reminders');
+	var child = document.getElementById(id);
+	g.removeChild(child);
+	//$('#' + id).remove();
+}
+
+
+});
+
 
 
 
@@ -52,10 +57,15 @@ $("#page-home").bind('pagebeforeshow',function() {
 		//$('#general-reminders').remove();
 		for(var i=0; i< taskObj.length; i++) {
 			if(taskObj[i].category == 1) {
-				$('#general-reminders').append('<li><a href="#"> '+ taskObj[i].task +'</a></li>');	
+				var element = '<li class="ui-state-default" id="'+ new Date().getTime() + '"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><a href="#"> '+ taskObj[i].task +'</a></li>';
+				$('#general-reminders').append(element);	
+				$('#general-reminders').sortable();
+				$('#general-reminders').disableSelection();
 			}
 			if(taskObj[i].category == 0) {
-				$('#categorized-reminders').append('<li><a href="#"> '+ taskObj[i].task +'</a></li>');	
+				$('#categorized-reminders').append('<li class="ui-state-default" id="'+ new Date().getTime() + '"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><a href="#"> '+ taskObj[i].task +'</a></li>');	
+				$('#categorized-reminders').sortable();
+				$('#categorized-reminders').disableSelection();
 			}
 		}
 		$('#general-reminders').listview('refresh');
@@ -63,3 +73,7 @@ $("#page-home").bind('pagebeforeshow',function() {
 	});
 
 });
+
+
+
+
