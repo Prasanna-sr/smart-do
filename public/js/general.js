@@ -6,7 +6,7 @@ $("#page-general").bind('pagebeforeshow',function() {
 	$('#general-bar').attr('style', 'display: none');
 	
 
-$('#btnTime').click(function() {
+$('#btnTime').off('click').on('click', function() {
 	$('#btnTime').buttonMarkup({ theme: "c" });
 	$('#btnPlace').buttonMarkup({ theme: "a" });
 
@@ -15,7 +15,7 @@ $('#btnTime').click(function() {
 });
 
 
-    $('#btnPlace').click(function() {
+    $('#btnPlace').off('click').on('click', function() {
 
   $('#btnTime').buttonMarkup({ theme: "a" });
   $('#btnPlace').buttonMarkup({ theme: "c" });
@@ -29,11 +29,20 @@ $('#btnTime').click(function() {
     
 
 
-
 $('#add-item').keydown(function(event) {
 
 	$('#general-bar').attr('style', 'display: inline'); 
 });
+
+
+
+$('#btnTimeDone').off('click').on('click', function() {
+	$.post(SMART_TODO.domain + "/addGeneralItemTime", 
+		{ item : $('#add-item').val(), datetime : $('#mydate').val() + 
+		','+ $('#mytime').val()}, function(result) {
+    $.mobile.changePage("#page-home", {transition : "none"});
+  });
+})
 });
 
 

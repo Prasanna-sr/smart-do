@@ -8,23 +8,33 @@ $("#page-category").bind('pagebeforeshow',function() {
 		$('#category-bar').attr('style', 'display: inline'); 
 	});
 
-	$('#btnCategoryDone').click(function() {
+	$('#btnCategoryDone').off('click').on('click', function() {
 		$.post(SMART_TODO.domain + "/addItem", {item : $('#add-item-category').val(),
 			itemCategory : "provision", category : 0, currentLocation : SMART_TODO.coords});
 	});
 
-	$('#btnShopping').click(function() {
+	$('#btnShopping').off('click').on('click', function() {
 		$('#shopping-bar').attr('style', 'display: inline');
 		$('#services-bar').attr('style', 'display: none');
 	});
 
-	$('#btnServices').click(function() {
+	$('#btnServices').off('click').on('click', function() {
 		$('#shopping-bar').attr('style', 'display: none');
 		$('#services-bar').attr('style', 'display: inline');
 	});
 
-	$('#shopping-bar a').click(function() {
-		$.post(SMART_TODO.domain + "/shoppingItem", { item : $('#add-item-category').val(), category : $(this).text(), location : SMART_TODO.coords }, function (resultStr) {
+	$('#shopping-bar a').off('click').on('click', function() {
+		$.post(SMART_TODO.domain + "/categoryItem", { item : $('#add-item-category').val(), 
+			category : $(this).text(), location : SMART_TODO.coords }, function (resultStr) {
+			$.mobile.changePage("#page-home", {transition : "none"});
+			//alert(resultStr);
+		});
+	});
+
+	$('#services-bar a').off('click').on('click', function() {
+		$.post(SMART_TODO.domain + "/categoryItem", { item : $('#add-item-category').val(), 
+			category : $(this).text(), location : SMART_TODO.coords }, function (resultStr) {
+			$.mobile.changePage("#page-home", {transition : "none"});
 			//alert(resultStr);
 		});
 	});

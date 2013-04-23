@@ -7,7 +7,7 @@ if(window) {
 }
 //var domain = "http://taskreminders.cloudfoundry.com";
 
-$('#timeSave').click(function(){
+$('#timeSave').off('click').on('click', function() {
 	var date = $('#mydate').val();
 	var time = $('#mytime').val();
 	$.post(domain + "/addItem", {date : date, time : time, location : "", item : $('#item').val()});

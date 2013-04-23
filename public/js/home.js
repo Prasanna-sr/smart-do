@@ -2,14 +2,14 @@
 var SMART_TODO = SMART_TODO || {};
 
 if(window) {
-	SMART_TODO.domain = (window.location.host.indexOf("localhost") != -1) ? "http://localhost:3000" : "http://taskreminders.cloudfoundry.com";
+	SMART_TODO.domain = (window.location.host.indexOf("localhost") !== -1) ? "http://localhost:3000" : "http://taskreminders.cloudfoundry.com";
 } else {
 	SMART_TODO.domain = "http://taskreminders.cloudfoundry.com";
 }
 
 $(document).ready(function() {
 //mobile devices
-if(screen.size <=700) {
+if(screen.size <= 700) {
 	watchlocation();
 } else {
 	watchlocation();
@@ -27,7 +27,7 @@ function onSuccess(position) {
 }
 
 function onError(error) {
-	console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+	console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
 }
 
 function watchlocation() {
@@ -41,21 +41,21 @@ function removeGeneral(id) {
 	g.removeChild(child);
 	//$('#' + id).remove();
 }
-
-
 });
 
+$(document).bind('touchmove', function(e) {
+   e.preventDefault();
+}, false);
 
 
-
-$("#page-home").bind('pagebeforeshow',function() {
+$("#page-home").bind('pagebeforeshow', function() {
 	$('#add-item').val('');
 	$('#general-reminders li').remove();
 	$('#categorized-reminders li').remove();
 
 	$.post('/getItem', {}, function(taskObj) {
 		//$('#general-reminders').remove();
-		for(var i=0; i< taskObj.length; i++) {
+		for(var i = 0; i < taskObj.length; i++) {
 			if(taskObj[i].category == 1) {
 				var element = '<li class="ui-state-default" id="'+ new Date().getTime() + '"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><a href="#"> '+ taskObj[i].task +'</a></li>';
 				$('#general-reminders').append(element);	

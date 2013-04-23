@@ -3,7 +3,7 @@ $("#page-general").bind('pagebeforeshow',function() {
 
 initialize();
 
-$('#btnMapDone').click(function() {
+$('#btnMapDone').off('click').on('click', function() {
   
 if(SMART_TODO.selectedPosition && SMART_TODO.selectedPosition.kb) {
   var selectedPosition = [parseFloat(SMART_TODO.selectedPosition.kb), parseFloat(SMART_TODO.selectedPosition.jb)];  
@@ -12,9 +12,9 @@ if(SMART_TODO.selectedPosition && SMART_TODO.selectedPosition.kb) {
 }
 
 $.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.coords, 
-  targetLocation : selectedPosition, item : $('#add-item').val(), category : 1});
-$.mobile.changePage("#page-home", {transition : "none"});
-
+  targetLocation : selectedPosition, item : $('#add-item').val(), category : 1}, function(result) {
+    $.mobile.changePage("#page-home", {transition : "none"});
+  });
 });
 
 

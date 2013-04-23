@@ -8,7 +8,7 @@ var routes = require('./lib/routes');
 
 var app = express();
 
-passport_config(passport, FacebookStrategy);
+passport_config(passport, FacebookStrategy, app);
 express_config(app, express, passport);
 routes(app, passport);
 app.listen(3000);
