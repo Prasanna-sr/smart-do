@@ -1,5 +1,5 @@
 $("#page-general").bind('pagebeforeshow',function() {
- $('.myIframe').css('height', $(window).height() * 0.65 +'px');
+ $('.myIframe').css('height', $(window).height() * 0.75 +'px');
 
 initialize();
 

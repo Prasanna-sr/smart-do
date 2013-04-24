@@ -7,7 +7,11 @@ if(window) {
 	SMART_TODO.domain = "http://taskreminders.cloudfoundry.com";
 }
 
-$(document).ready(function() {
+$(document).bind('pageinit', function() {
+    $( "#categorized-reminders" ).sortable();
+   });
+
+$(document).ready(function(e) {
 //mobile devices
 if(screen.size <= 700) {
 	watchlocation();
@@ -35,43 +39,24 @@ function watchlocation() {
 		{ enableHighAccuracy: true, maximumAge:5000 });
 }
 
-function removeGeneral(id) {
-	var g = document.getElementById('general-reminders');
-	var child = document.getElementById(id);
-	g.removeChild(child);
-	//$('#' + id).remove();
-}
-});
-
-$(document).bind('touchmove', function(e) {
-   e.preventDefault();
-}, false);
-
-
 $("#page-home").bind('pagebeforeshow', function() {
 	$('#add-item').val('');
 	$('#general-reminders li').remove();
 	$('#categorized-reminders li').remove();
 
 	$.post('/getItem', {}, function(taskObj) {
-		//$('#general-reminders').remove();
 		for(var i = 0; i < taskObj.length; i++) {
 			if(taskObj[i].category == 1) {
-				var element = '<li class="ui-state-default" id="'+ new Date().getTime() + '"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><a href="#"> '+ taskObj[i].task +'</a></li>';
+				var element = '<li data-theme="c" id="'+ new Date().getTime() + '"><a href="#"> '+ taskObj[i].task +'</a></li>';
 				$('#general-reminders').append(element);	
-				$('#general-reminders').sortable();
-				$('#general-reminders').disableSelection();
 			}
 			if(taskObj[i].category == 0) {
-				$('#categorized-reminders').append('<li class="ui-state-default" id="'+ new Date().getTime() + '"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><a href="#"> '+ taskObj[i].task +'</a></li>');	
-				$('#categorized-reminders').sortable();
-				$('#categorized-reminders').disableSelection();
+				$('#categorized-reminders').append('<li data-theme="c" id="'+ new Date().getTime() + '"><a href="#"> '+ taskObj[i].task +'</a></li>');	
 			}
 		}
 		$('#general-reminders').listview('refresh');
 		$('#categorized-reminders').listview('refresh');
 	});
-
 });
 
 
