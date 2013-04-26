@@ -5,10 +5,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+
 
 
 </head>
@@ -72,7 +71,10 @@
       </div>
 
       <div id="google_map">
-        <iframe src="./map.html" width="100%" class="myIframe" id="iFrameGeneral"></iframe>
+        <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+            <div id="map_canvas" style="height:350px;"></div>
+        </div>
+        <!-- <iframe src="./map.html" width="100%" class="myIframe" id="iFrameGeneral"></iframe> -->
         <div data-role="footer" class="ui-bar" data-position="fixed">
           <div class="ui-body ui-body-a"><a id="btnMapDone" data-role="button" data-theme="a">Done </a></div>
         </div>
@@ -117,7 +119,7 @@
           <!-- <div data-role="footer" data-position="fixed">
             <h4>Todo list</h4>
           </div> -->
-        </div> <!-- End of page category-->
+  </div> <!-- End of page category-->
 
 
 
@@ -133,7 +135,7 @@ data-tolerance= "15,15">
 
 
 
- <div data-role="popup" id="datetime" data-theme="a">
+<!--  <div data-role="popup" id="datetime" data-theme="a">
 
   <div data-role="fieldcontain">
     <label for="date">Pick Date</label>
@@ -149,11 +151,14 @@ data-tolerance= "15,15">
     <a data-role="button"> Cancel </a>
   </div>
 
-</div><!-- end of date time -->
+</div><!-- end of date time --> -->
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+
 <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" />
-<!-- <script type="text/javascript" src="js/index.js"></script> -->
+  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
+
 <script type="text/javascript" src="js/home.js"></script>
 <script type="text/javascript" src="js/time.js"></script>
 <script type="text/javascript" src="js/general.js"></script>

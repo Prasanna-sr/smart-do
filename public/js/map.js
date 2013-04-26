@@ -36,8 +36,9 @@ function initialize() {
 
   function showPosition(position) {
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var myOptions = { zoom: 16, center : latLng, mapTypeId: google.maps.MapTypeId.ROADMAP };
-    SMART_TODO.map = new google.maps.Map( document.getElementById('iFrameGeneral').contentDocument.getElementById('map_canvas'), myOptions );
+    var myOptions = { zoom: 16, center : latLng, mapTypeId: google.maps.MapTypeId.ROADMAP };    
+    SMART_TODO.map = new google.maps.Map( document.getElementById('map_canvas'), myOptions );
+    //SMART_TODO.map = new google.maps.Map( document.getElementById('iFrameGeneral').contentDocument.getElementById('map_canvas'), myOptions );
     //document.getElementById('iFrameGeneral').contentDocument.location.reload();
     //document.getElementById('iFrameGeneral').contentWindow.location.reload(true);
     //var iframe = document.getElementById('iFrameGeneral');
