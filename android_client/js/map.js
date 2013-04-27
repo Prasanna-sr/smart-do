@@ -1,37 +1,6 @@
 $("#page-general").bind('pagebeforeshow',function() {
-	//page events events
-
-	$('#date_time').attr('style', 'display: none');
-	$('#google_map').attr('style', 'display: none');
- 	$('#general-bar').attr('style', 'display: none');
-	initialize();	
-
-
-	$('#add-item').keydown(function(event) {
-
-	$('#general-bar').attr('style', 'display: inline'); 
-	});
-
-$('#btnTime').off('click').on('click', function() {
-	$('#btnTime').buttonMarkup({ theme: "c" });
-	$('#btnPlace').buttonMarkup({ theme: "a" });
-	$('#date_time').attr('style', 'display: inline');
-	$('#google_map').attr('style', 'display: none');
-});
-
-  $('#btnPlace').off('click').on('click', function() {
-
-  $('#btnTime').buttonMarkup({ theme: "a" });
-  $('#btnPlace').buttonMarkup({ theme: "c" });
-  $('#google_map').attr('style', 'display: block');
-  $('#date_time').attr('style', 'display: none');
-
-  google.maps.event.trigger(SMART_TODO.map, 'resize');
-  SMART_TODO.map.setCenter(new google.maps.LatLng(SMART_TODO.coords.latitude, 
-  	SMART_TODO.coords.longitude));
-});
-
-  
+ 
+initialize();
 
 $('#btnMapDone').off('click').on('click', function() {
   
@@ -41,22 +10,13 @@ if(SMART_TODO.selectedPosition && SMART_TODO.selectedPosition.kb) {
  var selectedPosition = [parseFloat(SMART_TODO.coords.longitude), parseFloat(SMART_TODO.coords.latitude)];
 }
 
-$.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.coords, type : 1,
+$.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.coords, 
   targetLocation : selectedPosition, item : $('#add-item').val(), category : 1}, function(result) {
     $.mobile.changePage("#page-home", {transition : "none"});
   });
 });
-    
 
-
-$('#btnTimeDone').off('click').on('click', function() {
-	$.post(SMART_TODO.domain + "/addItem", 
-		{ item : $('#add-item').val(), type : 0, datetime : $('#mydate').val() + 
-		','+ $('#mytime').val()}, function(result) {
-    $.mobile.changePage("#page-home", {transition : "none"});
-  });
 });
-
 
 
 function initialize() {
@@ -95,6 +55,8 @@ function initialize() {
   } 
 
 
+
+
   function getLocation() {
     if (navigator.geolocation)
     {
@@ -105,9 +67,5 @@ function initialize() {
     }
   }
 }
-
-});
-
-
 
 

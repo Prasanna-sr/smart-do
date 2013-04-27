@@ -1,8 +1,8 @@
 //app level global variable
 var SMART_TODO = SMART_TODO || {};
 
-//SMART_TODO.domain = "http://taskreminders.cloudfoundry.com"
-SMART_TODO.domain = "http://localhost:3000";
+SMART_TODO.domain = "http://taskreminders.cloudfoundry.com"
+//SMART_TODO.domain = "http://localhost:3000";
 // if(window) {
 // 	SMART_TODO.domain = (window.location.host.indexOf("localhost") !== -1) ? "http://localhost:3000" : "http://taskreminders.cloudfoundry.com";
 // } else {
@@ -27,9 +27,7 @@ function onSuccess(position) {
 	if(position && position.coords) {
 		SMART_TODO.coords = position.coords;
 		$.post(SMART_TODO.domain + '/updateCoordinates', {currentLocation : SMART_TODO.coords}, function(result) {
-			if(result) {
-				alert(JSON.stringify(result));	
-			}
+			alert(JSON.stringify(result));
 		});
 	} else {
 		console.log('position coordinates not avaialble');
