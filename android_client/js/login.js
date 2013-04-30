@@ -5,6 +5,7 @@
 //App level global variable
 var SMART_TODO = SMART_TODO || {};
 
+
 if(window) {
 	SMART_TODO.domain = (window.location.host.indexOf("localhost") !== -1) ? "http://localhost:3000" : "http://taskreminders.cloudfoundry.com";
 } else {
