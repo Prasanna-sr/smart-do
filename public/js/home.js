@@ -38,6 +38,8 @@ function onError(error) {
 
 
 $("#page-home").bind('pagebeforeshow', function() {
+
+	
 	$('#general-reminders li').remove();
 	$('#categorized-reminders li').remove();
 
@@ -48,14 +50,26 @@ $("#page-home").bind('pagebeforeshow', function() {
 				$('#general-reminders').append(element);	
 			}
 			if(taskObj[i].category == 0) {
-				$('#categorized-reminders').append('<li data-theme="c" id="'+ new Date().getTime() + '"><a href="#"> '+ taskObj[i].task +'</a></li>');	
+				$('#categorized-reminders').append('<li><div class="ui-grid-a"><div class="ui-block-a">' + taskObj[i].task + '</div><div class="ui-block-b align-right"><a id="btnDelete" href="index.html" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext"></a></div></div></li>');	
 			}
 		}
+		// $( "#categorized-reminders li" ).draggable({revert : "invalid"}, {start: function(){
+		// 	//alert('a');
+		// }});
+	//$( "#categorized-reminders li" ).selectable({stop: function(){}});
 		$( "#categorized-reminders" ).sortable();
 		$('#general-reminders').sortable();
+		//$('#general-reminders').selectable();
+
 		$('#general-reminders').listview('refresh');
 		$('#categorized-reminders').listview('refresh');
+		$("[id='btnDelete']").buttonMarkup();
+		$("[id='btnDelete']").button('refresh');
+		
+
 	});
 });
+
+
 
 

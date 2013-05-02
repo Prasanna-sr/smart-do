@@ -11,5 +11,5 @@ var app = express();
 passport_config(passport, FacebookStrategy, app);
 express_config(app, express, passport);
 routes(app, passport);
-app.listen(3000);
+app.listen(process.env.VCAP_APP_PORT || 3000);
 console.log('Server running at localhost:3000');
