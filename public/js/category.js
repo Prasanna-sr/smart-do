@@ -5,6 +5,7 @@ $("#page-category").bind('pagebeforeshow',function() {
 	$('#services-bar').attr('style', 'display: none');
 	$('#shopping-bar').attr('style', 'display: none');
 	$('#categoryMessage').attr('style', 'display: none');
+	$('#waitMessage').attr('style', 'display : none');
 
 	
 
@@ -29,14 +30,16 @@ $('#btnShopping').off('click').on('click', function() {
 	categoryFlag = 0;
 	$('#shopping-bar').attr('style', 'display: none');
 	$('#services-bar').attr('style', 'display: none');
-	
-
+	$('#categoryMessage').attr('style', 'display: none');
+	$('#waitMessage').attr('style', 'display : inline');
+	$('#waitMessage label').text("Please wait while we categorize your item ...");
 $.post("http://prasannatrial.herokuapp.com/services/time",
 	{task : $('#add-item-category').val(), type : "shopping"}, 
 	function(resultObj) {
+		$('#waitMessage').attr('style', 'display : none');
 		$('#categoryMessage').attr('style', 'display: inline-block');
 		$('#categoryMessage label').attr('style','display: block');
-		$('#categoryMessage label').text('Item ' + $('#add-item-category').val() + ' classified as ' 
+		$('#categoryMessage label').text('Item ' + $('#add-item-category').val() + ' categorized as ' 
 			+ resultObj.category + ' !');
 	});
 });
@@ -45,12 +48,16 @@ $('#btnServices').off('click').on('click', function() {
 	categoryFlag = 1;
 	$('#shopping-bar').attr('style', 'display: none');
 	$('#services-bar').attr('style', 'display: none');
+	$('#categoryMessage').attr('style', 'display: none');
+	$('#waitMessage').attr('style', 'display : inline');
+	$('#waitMessage label').text("Please wait while we categorize your item ...");
 	$.post("http://prasannatrial.herokuapp.com/services/time",
 	{task : $('#add-item-category').val(), type : "services"}, 
 	function(resultObj) {
+		$('#waitMessage').attr('style', 'display : none');
 		$('#categoryMessage').attr('style', 'display: inline-block');
-		$('#categoryMessage label').attr('style','display: inline');
-		$('#categoryMessage label').text('Item ' + $('#add-item-category').val() + ' classified as '
+		$('#categoryMessage label').attr('style','display: block');
+		$('#categoryMessage label').text('Item ' + $('#add-item-category').val() + ' categorized as '
 			+ resultObj.category + ' !');
 	});
 });
