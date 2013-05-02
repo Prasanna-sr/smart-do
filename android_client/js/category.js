@@ -52,9 +52,10 @@ $('#btnServices').off('click').on('click', function() {
 });
 
 $('#shopping-bar a').off('click').on('click', function() {
-	//$('#result-message label').text('Reminder added successfully !');
+	$('#result-message label').text('Reminder added successfully !');
 	$.post("http://prasannatrial.herokuapp.com/services/commit", {task : $('#add-item-category').val(),
 		type : $(this).text()}, function(){});
+	
 	$.post(SMART_TODO.domain + "/categoryItem", { item : $('#add-item-category').val(), 
 		name : SMART_TODO.name, id : SMART_TODO.id,
 		category : $(this).text(), location : SMART_TODO.coords }, function (resultStr) {

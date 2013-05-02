@@ -20,9 +20,7 @@ if(SMART_TODO && SMART_TODO.id) {
 
 
 $('#page-login').bind('pageinit', function() {
-
 	var redirecturl = SMART_TODO.domain + "/todo_index.html";
-
 	$("#login").click(function() {
 		top.location = "https://www.facebook.com/dialog/oauth/?client_id=" 
 		+ SMART_TODO.appId + "&redirect_uri=" + redirecturl + "&state=No";
@@ -33,7 +31,7 @@ $('#page-login').bind('pageinit', function() {
 
 	function load_FB_SDK(appId, url) {
 		//Load the SDK's source Asynchronously
-		( function(d, debug) {
+		(function(d, debug) {
 				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 				if (d.getElementById(id)) {
 					return;
@@ -66,6 +64,7 @@ $('#page-login').bind('pageinit', function() {
 
 				FB.api('/me', function(response) {
 				  SMART_TODO.name = response.name;
+				  localStorage.setItem("fb_id", response.id);
 				  SMART_TODO.id = response.id;
 				  watchlocation();
 				  $.mobile.changePage("#page-home", {transition : "none"});

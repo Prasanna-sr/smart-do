@@ -10,16 +10,18 @@
 
 </head>
 <body>
-<div data-role="page" id="page-login">
+<!--  <div data-role="page" id="page-login">
     <div data-role="header" data-position="fixed">
       <h1>Remind Me</h1>
-    </div><!-- /header -->
+    </div>
+    <br>
+    <br>
     <a data-role="button" data-theme="b" id="login">FB Login</a>
-</div>
+</div> -->
 
   <div data-role="page" id="page-home">
     <div data-role="header" data-position="fixed">
-      <h1>Todo list</h1>
+      <h1>Smart-DO</h1>
     </div><!-- /header -->
 
     <div data-role="content">
@@ -49,7 +51,8 @@
 
   <div data-role="page" id="page-general">
     <div data-role="header" data-position="fixed">
-      <h1>Remind Me</h1>
+      <a href="#page-home" data-icon="back" data-transition="none">back</a>
+      <h1>Smart-DO</h1>
     </div><!-- /header -->
     <div data-role="content">
       <label for="add-item"> Add an item :  </label>
@@ -87,7 +90,8 @@
 
   <div data-role="page" id="page-category">
     <div data-role="header" data-position="fixed">
-      <h1>Remind Me</h1>
+      <a href="#page-home" data-icon="back" data-transition="none">back</a>
+      <h1>Smart-DO</h1>
     </div><!-- /header -->
     <div data-role="content">
       <label for="add-item-category"> Add an item   </label>
@@ -100,14 +104,13 @@
         </div>
       </div>
       <div id="categoryMessage" class="ui-body ui-body-e">
-        <div data-role="fieldcontain" >
-          <fieldset data-role="controlgroup">
-          <label for="btnChange"> tour task has been claasifies as electornics. </label>
-          <a id="btnEdit" data-role="button"  data-theme="a" data-icon="delete" data-inline="true" data-mini="true">Edit</a>
-          <a id="btnAccept" data-role="button" data-theme="a" data-icon="check" data-inline="true" data-mini="true">Accept</a>
+        
+          <label for="btnChange"></label>
+          <fieldset class="ui-grid-a">
+          <div class="ui-block-a"><a id="btnEdit" data-role="button"  data-theme="a" data-icon="delete" data-inline="true" data-mini="true">Edit</a></div>
+          <div class="ui-block-b"><a id="btnAccept" data-role="button" data-theme="a" data-icon="check" data-inline="true" data-mini="true">Accept</a></div>
           </fieldset>
         </div>
-      </div>
 
         <br />
       <div id="shopping-bar">
@@ -120,10 +123,12 @@
         </div>
       </div>
       <div id="services-bar">
+        <div data-role="controlgroup" data-type="horizontal">
           <a data-role="button">Car Services</a>
           <a data-role="button">Post Office</a>
           <a data-role="button">Book Store</a>
           <a data-role="button">Health and Beauty</a>
+        </div>
       </div>
       <!-- <div id="result-message" class="ui-body ui-body-e">
         <label> </label>

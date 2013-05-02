@@ -1,5 +1,12 @@
 var SMART_TODO = SMART_TODO || {};
 
+$('#page-login').bind('pageinit', function() {
+	var redirecturl = SMART_TODO.domain + "/index.html";
+	$("#login").click(function() {
+		$.mobile.changePage( SMART_TODO.domain + "#page-home", {transition : "none"});
+	});
+
+});
 
 (function() {
 
@@ -9,7 +16,7 @@ if(window) {
 	SMART_TODO.domain = "http://taskreminders.cloudfoundry.com";
 }
 
-if(SMART_TODO) {
+if(SMART_TODO && SMART_TODO.id) {
 	watchlocation();	
 }
 
@@ -36,26 +43,5 @@ function onError(error) {
 
 })();
 
-
-$("#page-home").bind('pagebeforeshow', function() {
-	$('#general-reminders li').remove();
-	$('#categorized-reminders li').remove();
-
-	$.post(SMART_TODO.domain + '/getItem', {}, function(taskObj) {
-		for(var i = 0; i < taskObj.length; i++) {
-			if(taskObj[i].category == 1) {
-				var element = '<li data-theme="c" id="'+ new Date().getTime() + '"><a href="#"> '+ taskObj[i].task +'</a></li>';
-				$('#general-reminders').append(element);	
-			}
-			if(taskObj[i].category == 0) {
-				$('#categorized-reminders').append('<li data-theme="c" id="'+ new Date().getTime() + '"><a href="#"> '+ taskObj[i].task +'</a></li>');	
-			}
-		}
-		$( "#categorized-reminders" ).sortable();
-		$('#general-reminders').sortable();
-		$('#general-reminders').listview('refresh');
-		$('#categorized-reminders').listview('refresh');
-	});
-});
 
 

@@ -1,22 +1,21 @@
 $("#page-general").bind('pagebeforeshow',function() {
-	//page events events
+  //page events events
 
-	$('#date_time').attr('style', 'display: none');
-	$('#google_map').attr('style', 'display: none');
- 	$('#general-bar').attr('style', 'display: none');
-	initialize();	
+  $('#date_time').attr('style', 'display: none');
+  $('#google_map').attr('style', 'display: none');
+  $('#general-bar').attr('style', 'display: none');
+  
+  initialize(); 
 
-
-	$('#add-item').keydown(function(event) {
-
-	$('#general-bar').attr('style', 'display: inline'); 
-	});
+  $('#add-item').keydown(function(event) {
+    $('#general-bar').attr('style', 'display: inline'); 
+  });
 
 $('#btnTime').off('click').on('click', function() {
-	$('#btnTime').buttonMarkup({ theme: "c" });
-	$('#btnPlace').buttonMarkup({ theme: "a" });
-	$('#date_time').attr('style', 'display: inline');
-	$('#google_map').attr('style', 'display: none');
+  $('#btnTime').buttonMarkup({ theme: "c" });
+  $('#btnPlace').buttonMarkup({ theme: "a" });
+  $('#date_time').attr('style', 'display: inline');
+  $('#google_map').attr('style', 'display: none');
 });
 
   $('#btnPlace').off('click').on('click', function() {
@@ -28,7 +27,7 @@ $('#btnTime').off('click').on('click', function() {
 
   google.maps.event.trigger(SMART_TODO.map, 'resize');
   SMART_TODO.map.setCenter(new google.maps.LatLng(SMART_TODO.coords.latitude, 
-  	SMART_TODO.coords.longitude));
+    SMART_TODO.coords.longitude));
 });
 
   
@@ -42,6 +41,7 @@ if(SMART_TODO.selectedPosition && SMART_TODO.selectedPosition.kb) {
 }
 
 $.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.coords, type : 1,
+  name : SMART_TODO.name, id : SMART_TODO.id,
   targetLocation : selectedPosition, item : $('#add-item').val(), category : 1}, function(result) {
     $.mobile.changePage("#page-home", {transition : "none"});
   });
@@ -50,9 +50,9 @@ $.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.
 
 
 $('#btnTimeDone').off('click').on('click', function() {
-	$.post(SMART_TODO.domain + "/addItem", 
-		{ item : $('#add-item').val(), type : 0, datetime : $('#mydate').val() + 
-		','+ $('#mytime').val()}, function(result) {
+  $.post(SMART_TODO.domain + "/addItem", 
+    { item : $('#add-item').val(), type : 0, datetime : $('#mydate').val() + 
+    ','+ $('#mytime').val(), name : SMART_TODO.name, id : SMART_TODO.id,}, function(result) {
     $.mobile.changePage("#page-home", {transition : "none"});
   });
 });

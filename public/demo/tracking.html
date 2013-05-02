@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
+  </style>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript">
+  function initialize() {
+
+    navigator.geolocation.getCurrentPosition(showPosition);
+
+    function showPosition(position) {
+      var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var mapOptions = { center: latLng, zoom: 16, mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions); 
+      var marker = new google.maps.Marker({
+        position: latLng,
+        draggable : true,
+        map: map
+      }); 
+
+      google.maps.event.addListener(marker, 'dragend', function(event) {
+        //alert(event.latLng.kb + ' , ' + event.latLng.jb);
+        var coords = {};
+        coords.longitude = event.latLng.kb;
+        coords.latitude = event.latLng.jb;
+          $.post(window.location.origin + '/updateCoordinates1', {currentLocation : coords,
+           id : localStorage.getItem("fb_id")}, function(result) {
+            alert(result.task); 
+            });
+      }); 
+    }
+
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+</head>
+<body>
+  <div id="map-canvas"></div>
+
+</body>
+</html>
