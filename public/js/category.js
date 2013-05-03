@@ -34,7 +34,7 @@ $('#btnShopping').off('click').on('click', function() {
 	$('#waitMessage').attr('style', 'display : inline');
 	$('#waitMessage label').text("Please wait while we categorize your item ...");
 $.post("http://prasannatrial.herokuapp.com/services/time",
-	{task : $('#add-item-category').val(), type : "shopping"}, 
+	{task : $('#add-item-category').val().trim(), type : "shopping"}, 
 	function(resultObj) {
 		$('#waitMessage').attr('style', 'display : none');
 		$('#categoryMessage').attr('style', 'display: inline-block');
@@ -52,7 +52,7 @@ $('#btnServices').off('click').on('click', function() {
 	$('#waitMessage').attr('style', 'display : inline');
 	$('#waitMessage label').text("Please wait while we categorize your item ...");
 	$.post("http://prasannatrial.herokuapp.com/services/time",
-	{task : $('#add-item-category').val(), type : "services"}, 
+	{task : $('#add-item-category').val().trim(), type : "services"}, 
 	function(resultObj) {
 		$('#waitMessage').attr('style', 'display : none');
 		$('#categoryMessage').attr('style', 'display: inline-block');
