@@ -7,14 +7,43 @@
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
-
+  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
 <style>
 
-.display-right { text-align:right;display:inline;}
-.align-right { text-align:right;}
-.display-inline {display:inline;}
-.font-bold{font-weight:bold;}
+.display-right { 
+  text-align:right;display:inline;
+}
+.align-right { 
+  text-align:right;
+}
+.display-inline {
+  display:inline;
+}
+.font-bold {
+  font-weight:bold;
+}
+.ui-block-z {
+  margin-right: 20%;
+  margin-left: 20%;
+  
+}
+.ui-grid-a div {
+  padding: 10px;
+  }
+  img {
+  width: 100%;
+  height: 100px;
+  margin: 10px;  
+  }
+.imgCaption {
+  width: 100%;
+  height: 100px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 12px;
+  margin-top: : -20px;
+}
 </style>
 
 </head>
@@ -34,6 +63,7 @@
     </div><!-- /header -->
 
     <div data-role="content">
+      <a data-role="button" data-theme="b" href="#page-home-grid"> Add an item </a>
       <fieldset class="ui-grid-a">
         <div data-role="collapsible" data-theme="b" style="width:89%" class="ui-block-a">
           <h2>Categorized Reminders</h2>
@@ -69,9 +99,46 @@
     </div><!-- /content -->
   </div><!-- /home page -->
 
+
+  <div data-role="page" id="page-home-grid" data-theme="d">
+    <div data-role="header" data-position="fixed">
+      <h1>Smart-DO</h1 >
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <label class="font-bold">Select a task  </label>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <a href="#page-category"><img src="./img/shopping.jpg" alt="Smiley face"></a>
+          <div class="imgCaption">
+              Shopping list such as Provisions, Clothing, Electronics, etc.</div>
+          <!-- <button type="button" data-theme="c">Previous</button> -->
+        </div>
+        <div class="ui-block-b">
+          <a href="#page-category"><img src="./img/services.jpg" alt="Smiley face"></a>
+          <div class="imgCaption">Services such as Gas station, Health and beauty, Book store etc.</div>
+          <!-- <button type="button" data-theme="c">Next</button> -->
+        </div>     
+      </div>
+      <!-- <div class="ui-grid-a"> -->
+        <div class="ui-block-z"> 
+          <a href="#page-general"><img src="./img/todo.jpg" alt="Smiley face"></a>
+          <div class="imgCaption">General todolist items </div>
+        </div>
+          <!-- <button type="button" data-theme="c">Previous</button> -->
+        <!-- </div>     -->
+      <!-- </div> -->
+      <!-- <div class="ui-grid-solo">
+        <img src="./img/services.jpg" alt="Smiley face">
+        <div class="ui-block-a"><button type="v" data-theme="b">More</button></div>
+      </div> -->
+    </div>
+
+  </div> <!-- home grid page -->
+
   <div data-role="page" id="page-general">
     <div data-role="header" data-position="fixed">
-      <a href="#page-home" data-icon="back" data-transition="none">back</a>
+      <a data-rel="back" data-icon="back" data-transition="none">back</a>
       <h1>Smart-DO</h1>
     </div><!-- /header -->
     <div data-role="content">
@@ -100,8 +167,11 @@
         <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
             <div id="map_canvas" style="height:400px;"></div>
         </div>
-        <div data-role="footer" class="ui-bar" data-position="fixed">
+        <!-- <div data-role="footer" class="ui-bar" data-position="fixed">
           <div class="ui-body ui-body-a"><a id="btnMapDone" data-role="button" data-theme="a">Done </a></div>
+        </div> -->
+        <div class="ui-bar" data-position="fixed">
+          <a id="btnMapDone" data-role="button" data-theme="a">Done </a>
         </div>
       </div>
     </div><!-- End of content -->
@@ -170,7 +240,7 @@
 
 <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" />
 
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 

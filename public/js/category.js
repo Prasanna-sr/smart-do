@@ -2,6 +2,7 @@ $("#page-category").bind('pagebeforeshow',function() {
   var marker;
   var map;
   var markersArray = [];
+  var markerIcon = "./img/marker-icon.png";
 
 	initialize();
 	var categoryFlag;
@@ -130,6 +131,10 @@ function displayMap(placesArr) {
 			}
 		$('#result-message label').text('Reminder added successfully at these places ! ');
 		google.maps.event.trigger(map, 'resize');
+
+		  map.setCenter(new google.maps.LatLng(SMART_TODO.coords.latitude, SMART_TODO.coords.longitude));
+
+
 }
 
 $('#services-bar a').off('click').on('click', function() {
@@ -151,35 +156,50 @@ function clearOverlays() {
   markersArray = [];
 }
 
+
+
 function placeMarker(latitude, longitude, title) {
   	var latLng = new google.maps.LatLng(latitude, longitude);
     marker = new google.maps.Marker({
       position: latLng,
       map: map,
-      title: title
+      title: title,
+      icon : markerIcon
     });
+    marker['infowindow']  = new google.maps.InfoWindow({
+                content: title
+            });
     markersArray.push(marker);
+     google.maps.event.addListener(marker, 'click', function() {
+    this['infowindow'].open(map, this);
+  });
   } 
+
 
 
 function initialize() {
 
   //var SMART_TODO.map;
   
+
  
   
   if(SMART_TODO && SMART_TODO.coords) {
     showMap(SMART_TODO);
+  
   } else {
     getLocation();
   }
 
 
+
   function showMap(position) {
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    myOptions = { zoom: 15, center : latLng, mapTypeId: google.maps.MapTypeId.ROADMAP };    
+    myOptions = { zoom: 14, center : latLng, mapTypeId: google.maps.MapTypeId.ROADMAP };    
     map = new google.maps.Map( document.getElementById('category-map-canvas'), myOptions );
+
   }
+
 
 
   function getLocation() {
