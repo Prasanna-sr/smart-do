@@ -1,6 +1,6 @@
 $("#page-general").bind('pagebeforeshow',function() {
   //page events events
-
+$('#add-item').val('');
   $('#date_time').attr('style', 'display: none');
   $('#google_map').attr('style', 'display: none');
   $('#general-bar').attr('style', 'display: none');
@@ -42,7 +42,7 @@ if(SMART_TODO.selectedPosition && SMART_TODO.selectedPosition.kb) {
 
 $.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.coords, type : 1,
   name : SMART_TODO.name, id : SMART_TODO.id,
-  targetLocation : selectedPosition, item : $('#add-item').val(), category : 1}, function(result) {
+  targetLocation : selectedPosition, item : $('#add-item').val().trim(), category : 1}, function(result) {
     $.mobile.changePage("#page-home", {transition : "none"});
   });
 });
@@ -50,13 +50,19 @@ $.post(SMART_TODO.domain + "/addItem", {time : "", currentLocation : SMART_TODO.
 
 
 $('#btnTimeDone').off('click').on('click', function() {
+  
+  //timeWorker($('#mydate').val(), $('#mytime').val(),$('#add-item').val());
+
+  // timer($('#mydate').val(), $('#mytime').val(),$('#add-item').val(), function(result) {
+  //   alert(result);
+  // });
+  console.log("next action");
   $.post(SMART_TODO.domain + "/addItem", 
     { item : $('#add-item').val(), type : 0, datetime : $('#mydate').val() + 
     ','+ $('#mytime').val(), name : SMART_TODO.name, id : SMART_TODO.id,}, function(result) {
     $.mobile.changePage("#page-home", {transition : "none"});
   });
 });
-
 
 
 function initialize() {
@@ -111,3 +117,44 @@ function initialize() {
 
 
 
+function timer(date, time, task, callback) {
+setTimeout(function() {
+var dateArr = date.split('/');
+console.log(dateArr[2]);
+
+if(time.indexOf("AM") == -1) {
+
+var hours = time.substr(0,2);
+var min = time.substr(3,2);
+
+ if(hours == 12) {
+     hours = "00";
+ } else {
+      hours = hours + 12;      
+ } 
+ } else {
+      var hours = time.substr(0,2);
+      var min = time.substr(3,2);       
+ }
+ 
+ dateArr[0] = dateArr[0] - 1;
+console.log(dateArr[2],dateArr[0],dateArr[1], hours, min);
+
+
+var setTime = new Date(dateArr[2],dateArr[0],dateArr[1],hours, min,0,0).getTime();
+console.log(new Date(dateArr[2],dateArr[0],dateArr[1],hours, min,0,0));
+console.log(new Date());
+
+var reached = true;
+while (reached) {
+    if(new Date().getTime() == setTime) {
+        reached = false;
+        callback("success");
+        //alert("time to " + task + " !");
+        //alert("time to " + task + " !");
+    } else if (new Date().getTime() > setTime) {
+      reached = false;
+    }
+}
+}, 0);
+}
